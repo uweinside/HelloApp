@@ -27,7 +27,7 @@ namespace HelloApp
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += FabOnClick;
 
-            AppCenter.Start("1c984b7c-ff71-4c0d-b07e-d32bdb3dad8d",
+            Microsoft.AppCenter.AppCenter.Start("1c984b7c-ff71-4c0d-b07e-d32bdb3dad8d",
                    typeof(Analytics), typeof(Crashes));
 
         }
