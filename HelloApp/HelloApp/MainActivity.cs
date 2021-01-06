@@ -30,6 +30,28 @@ namespace HelloApp
             Microsoft.AppCenter.AppCenter.Start("1c984b7c-ff71-4c0d-b07e-d32bdb3dad8d",
                    typeof(Analytics), typeof(Crashes));
 
+            TextView lblInfo = FindViewById<TextView>(Resource.Id.lblInfo);
+            Button clickMeButton = FindViewById<Button>(Resource.Id.btnClickMe);
+            Button crashMeButton = FindViewById<Button>(Resource.Id.btnCrashMe);
+
+            clickMeButton.Click += (sender, e) =>
+            {
+                lblInfo.Text = "Clicked.";
+            };
+
+            crashMeButton.Click += (sender, e) =>
+            {
+                try
+                {
+                    Crashes.GenerateTestCrash();
+                }
+                catch (Exception exception)
+                {
+                    Crashes.TrackError(exception);
+                    lblInfo.Text = "Crashed.";
+                }
+            };
+
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
