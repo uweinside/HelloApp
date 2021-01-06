@@ -6,6 +6,9 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace HelloApp
 {
@@ -23,6 +26,10 @@ namespace HelloApp
 
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += FabOnClick;
+
+            AppCenter.Start("1c984b7c-ff71-4c0d-b07e-d32bdb3dad8d",
+                   typeof(Analytics), typeof(Crashes));
+
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
